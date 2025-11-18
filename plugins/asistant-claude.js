@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 /* URL de la API (tal como la diste) */
-const CLAUDE_API_URL = 'https://ends.apiadonix.space/ai/claude?apikey=felixkey2011';
+const CLAUDE_API_URL = 'https://api-adonix.ultraplus.click/ai/gemini?apikey=AdonixKeyd6ne2h9555';
 
 export const handler = async (m, { conn, args, text }) => {
   try {
