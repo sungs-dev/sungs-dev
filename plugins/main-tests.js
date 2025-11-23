@@ -139,9 +139,9 @@ const handler = async (m, { conn, usedPrefix: _p }) => {
       contextInfo: {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: idcanal,
+          newsletterJid: channelRD.id,
           serverMessageId: 100,
-          newsletterName: namecanal
+          newsletterName: global.channelRD
         }
       }
     }
