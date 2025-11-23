@@ -1,21 +1,33 @@
-// ping.js (handler para Baileys)
-const handler = async (m, { conn }) => {
-  try {
-    // Marca el inicio para medir latencia
-    const start = Date.now();
-
-    // Envía el mensaje (se mide el tiempo que tarda sendMessage)
-    await conn.sendMessage(
-      m.chat,
-      { text: `¡Pong! ${Date.now() - start}ms` },
-      { quoted: m, contextInfo: rcanal } // <-- aquí pasas m y rcanal para el "contexto de canal"
-    );
-  } catch (err) {
-    console.error(err);
-    // intenta notificar el error (también usando quoted para mantener contexto)
-    await conn.sendMessage(m.chat, { text: 'Error al calcular ping' }, { quoted: m, contextInfo: rcanal }).catch(() => {});
+// ping.js - handler para Baileys (usa conn.reply(m.chat, text, m, rcanal))
+const defaultRcanal = {
+  isForwarded: true,
+  forwardingScore: 999,
+  externalAdReply: {
+    showAdAttribution: true,
+    title: 'Canal',
+    body: 'Reenviado desde canal',
+    thumbnailUrl: 'https://i.imgur.com/tuMiniatura.png',
+    sourceUrl: 'https://youtube.com/tuEnlaceOcanal'
   }
 };
 
-handler.command = ['p', 'ping']; // disparadores: #p o #ping según tu sistema de prefixes
+const handler = async (m, { conn, rcanal } = {}) => {
+  try {
+    const start = Date.now();
+    // cálculo inmediato; forzamos mínimo 33 ms como pediste
+    let latency = Date.now() - start;
+    latency = Math.max(latency, 33);
+    const text = `¡pong! (${latency} ms`; // exactamente en el formato que pediste
+
+    // Llamada tal cual -> '¡pong! (X ms', m, rcanal)
+    await conn.reply(m.chat, text, m, rcanal || defaultRcanal);
+  } catch (err) {
+    console.error(err);
+    try {
+      await conn.reply(m.chat, 'Error al calcular ping', m, rcanal || defaultRcanal);
+    } catch {}
+  }
+};
+
+handler.command = ['p', 'ping'];
 export default handler;
