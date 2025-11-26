@@ -5,7 +5,13 @@ export async function before(m, { groupMetadata }) {
   if (!command || command.length === 0) return
 
   // Comandos adicionales que siempre deben reconocerse
-  const extraCommands = ['setbanner', 'setname', 'setcurrency', 'setmoneda']
+  const extraCommands = [
+    'setbanner',
+    'setname',
+    'setcurrency',
+    'setmoneda',
+    'inspect', // <<--- se añade "inspect"
+  ]
 
   const validCommand = (command, plugins) => {
     // Reconocer comandos extra primero
@@ -31,6 +37,8 @@ export async function before(m, { groupMetadata }) {
 
   if (validCommand(command, global.plugins)) {
     // Aquí tu lógica normal para comandos válidos
+    // Por ejemplo, puedes agregar una lógica especial si quieres para inspect aquí,
+    // aunque normalmente se manejaría en su propio plugin/handler.
   } else {
     const comando = command
     await m.reply(`👑 El comando *${comando}* No fue encontrado en mi base. Solicita los comandos existentes escribiendo *#help.*`)
