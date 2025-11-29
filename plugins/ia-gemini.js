@@ -70,7 +70,6 @@ conn.reply(m.chat, `😿Error: \n\n${error.message}`, m, rcanal)
 
 handler.command = ['gemini', 'bard', 'openai', 'dalle', 'flux', 'ia', 'chatgpt', 'luminai', 'iavoz',  'yotsuba', 'yotsuba-nakano-ia']
 handler.help = ['gemini', 'bard', 'openai', 'dalle', 'flux', 'ia', 'chatgpt', 'luminai', 'iavoz', 'aivoz', 'vozia']
-handler.tags = ['tools']
-handler.group = true
+handler.tags = ['ia']
 
 export default handler
