@@ -46,5 +46,6 @@ const handler = async (m, { args, participants }) => {
 };
 
 handler.command = /^formarsala$/i;
+handler.group = true;
 
 export default handler;
