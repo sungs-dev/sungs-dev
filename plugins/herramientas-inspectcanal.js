@@ -5,7 +5,7 @@ const handler = async (m, { args }) => {
   const enlace = args[0]?.trim();
 
   if (!enlace) {
-    return m.reply('❌ Debes escribir el enlace del canal de WhatsApp.');
+    return m.reply('👑 Debes escribir el enlace del canal de WhatsApp.', rcanal);
   }
   if (!/^https:\/\/whatsapp\.com\/channel\//.test(enlace)) {
     return m.reply('❌ Solo se permiten enlaces de canales de WhatsApp.');
