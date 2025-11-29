@@ -10,7 +10,9 @@ export async function before(m, { groupMetadata }) {
     'setname',
     'setcurrency',
     'setmoneda',
-    'inspect', // <<--- se añade "inspect"
+    'inspect',
+    'ia',
+    'ai', // Comandos de IA 
   ]
 
   const validCommand = (command, plugins) => {
