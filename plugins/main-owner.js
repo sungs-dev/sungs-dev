@@ -5,7 +5,7 @@ let handler = async (m, { conn }) => {
   }
 
   // Datos del owner
-  let numberOwner = '18293142989' // Número del dueño (owner)
+  let numberOwner = '18094374392' // Número del dueño (owner)
   let nombreOwner = '🍃 C R E A D O R 🍃'
 
   // vCard del owner
